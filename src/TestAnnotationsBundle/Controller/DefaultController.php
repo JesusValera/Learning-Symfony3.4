@@ -14,4 +14,12 @@ class DefaultController extends Controller
     {
         return $this->render('TestAnnotationsBundle:Default:index.html.twig');
     }
+
+    /**
+     * @Route("/name")
+     */
+    public function nameAction()
+    {
+        return $this->render('TestAnnotationsBundle:Default:name.html.twig');
+    }
 }

@@ -1,3 +1,7 @@
 test_homepage:
     path:     /
     defaults: { _controller: TestBundle:Default:index }
+
+test_name:
+    path:     /name
+    defaults: { _controller: TestBundle:Default:name }
