@@ -3,5 +3,5 @@ test_homepage:
     defaults: { _controller: TestBundle:Default:index }
 
 test_name:
-    path:     /name
+    path:     /name/{nPila}
     defaults: { _controller: TestBundle:Default:name }

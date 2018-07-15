@@ -16,10 +16,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/name")
+     * @Route("/name/{nPila}")
      */
-    public function nameAction()
+    public function nameAction($nPila = 'Sin nombre')
     {
-        return $this->render('TestAnnotationsBundle:Default:name.html.twig');
+        return $this->render('TestAnnotationsBundle:Default:name.html.twig', ["nPila" => $nPila]);
     }
 }

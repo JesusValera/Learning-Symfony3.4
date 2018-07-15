@@ -11,8 +11,8 @@ class DefaultController extends Controller
         return $this->render('index.html.twig');
     }
 
-    public function nameAction()
+    public function nameAction($nPila)
     {
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', ['nPila' => $nPila]);
     }
 }
