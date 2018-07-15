@@ -24,7 +24,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/example", name="paco_example")
+     * @Route("/example/", name="paco_example")
      */
     public function exampleAction()
     {
@@ -32,7 +32,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/redirection")
+     * @Route("/redirection/")
      */
     public function redirectionAction()
     {
