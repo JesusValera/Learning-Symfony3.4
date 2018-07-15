@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="paco_index")
      */
     public function indexAction()
     {
@@ -21,5 +21,22 @@ class DefaultController extends Controller
     public function nameAction($nPila = 'Sin nombre')
     {
         return $this->render('TestAnnotationsBundle:Default:name.html.twig', ["nPila" => $nPila]);
+    }
+
+    /**
+     * @Route("/example", name="paco_example")
+     */
+    public function exampleAction()
+    {
+        return $this->render('TestAnnotationsBundle:Default:example.html.twig');
+    }
+
+    /**
+     * @Route("/redirection")
+     */
+    public function redirectionAction()
+    {
+        return $this->redirectToRoute('paco_index');
+        //return $this->render('TestAnnotationsBundle:Default:redirection.html.twig');
     }
 }
