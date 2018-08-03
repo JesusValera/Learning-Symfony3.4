@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Update Getters & Setters.
  * php bin/console doctrine:generate:entities TestAnnotationsBundle/Entity/Events
  *
- * [--dump-sql] shows the instruction.
+ * [--dump-sql] shows the auto-generated query.
  * php bin/console doctrine:schema:update --dump-sql
  * This command creates the tables.
  * php bin/console doctrine:schema:update --force

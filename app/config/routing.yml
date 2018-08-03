@@ -1,12 +1,17 @@
-test:
-  resource: "@TestBundle/Resources/config/routing.yml"
-  prefix:   /prueba
-
 app:
   resource: '@AppBundle/Controller/'
   type: annotation
 
+test:
+  resource: "@TestBundle/Resources/config/routing.yml"
+  prefix:   /test
+
+all_events:
+  resource: "@TestAnnotationsBundle/Controller/"
+  type:     annotation
+  prefix:   /events/all
+
 test_annotations:
   resource: "@TestAnnotationsBundle/Controller/"
   type:     annotation
-  prefix:   /otraprueba
+  prefix:   /annotations

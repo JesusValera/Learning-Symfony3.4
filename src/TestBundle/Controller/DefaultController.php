@@ -8,11 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('index.html.twig');
+        return $this->render('TestBundle:Default:index.html.twig');
     }
 
-    public function nameAction($nPila)
+    public function nameAction($argum)
     {
-        return $this->render('index.html.twig', ['nPila' => $nPila]);
+        return $this->render('TestBundle:Default:name.html.twig', ['argum' => $argum]);
     }
 }
