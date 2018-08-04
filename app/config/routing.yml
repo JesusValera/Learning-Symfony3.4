@@ -6,6 +6,10 @@ test:
   resource: "@TestBundle/Resources/config/routing.yml"
   prefix:   /test
 
+test_2:
+  resource: "@TestBundle/Resources/config/routing2.yml"
+  prefix:   /test2
+
 all_events:
   resource: "@TestAnnotationsBundle/Controller/"
   type:     annotation
@@ -14,4 +18,4 @@ all_events:
 test_annotations:
   resource: "@TestAnnotationsBundle/Controller/"
   type:     annotation
-  prefix:   /annotations
+  prefix:   /

@@ -4,7 +4,7 @@
 * CLEAR CACHE PRODUCTION.
  php bin/console cache:clear --env=prod
 
-* See all current routes.
+* SEE ALL CURRENT ROUTES.
  php bin/console debug:router
 
 * GENERATE BUNDLE (It's not recommendable to use in versions later to 3.4).

@@ -4,7 +4,12 @@ namespace TestAnnotationsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * @Route("/annotations")
+ */
 class DefaultController extends Controller
 {
     /**
@@ -12,22 +17,32 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        //return $this->render('TestAnnotationsBundle:Events:all.html.twig');
         return $this->render('TestAnnotationsBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/{argum}", name="anno_name")
-     * @param string $arg
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/response", name="annoR_index")
      */
-    public function nameAction($argum = 'Any argument.')
+    public function indexRAction()
     {
-        return $this->render('TestAnnotationsBundle:Default:name.html.twig', ["argum" => $argum]);
+        return new Response("<html><head><title>Response</title><body>Testing response.</body></head></html>");
     }
 
     /**
-     * @Route("/example/", name="anno_example")
+     * @Route("/name/{arg}", name="anno_name")
+     * @param string $arg
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function nameAction($arg = 'Any argument.')
+    {
+        if ($arg == 'error') {
+            throw new NotFoundHttpException("ERROR");
+        }
+        return $this->render('TestAnnotationsBundle:Default:name.html.twig', ["arg" => $arg]);
+    }
+
+    /**
+     * @Route("/example", name="anno_example")
      */
     public function exampleAction()
     {
@@ -35,11 +50,11 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/redirection/", name="anno_redirect")
+     * @Route("/redirection", name="anno_redirect")
      */
     public function redirectionAction()
     {
+        //return $this->redirect($this->generateUrl('anno_index'));
         return $this->redirectToRoute('anno_index');
-        //return $this->render('TestAnnotationsBundle:Default:redirection.html.twig');
     }
 }

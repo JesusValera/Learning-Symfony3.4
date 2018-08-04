@@ -1,7 +1,6 @@
-Symfony 3.4 LTS
+Symfony 3.4 LTS Project
 =======
 
-A Symfony project created on July 14, 2018, 8:50 pm.
-# Symfony 3 Project
+Playlist from Paco Gomez: https://www.youtube.com/playlist?list=PLm0WEBt1zBgJDhSRRqSKmatnyKdW2-3Qz
 
-Paco Gomez's videotutorials from Yotube: https://www.youtube.com/playlist?list=PLm0WEBt1zBgJDhSRRqSKmatnyKdW2-3Qz
+// A Symfony project created on July 14, 2018, 8:50 pm.

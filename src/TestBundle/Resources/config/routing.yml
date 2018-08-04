@@ -1,7 +1,7 @@
 test_homepage:
-    path:     /
-    defaults: { _controller: TestBundle:Default:index }
+  path:     /
+  defaults: { _controller: TestBundle:Default:index }
 
 test_name:
-    path:     /{argum}
-    defaults: { _controller: TestBundle:Default:name }
+  path:     /name/{arg}
+  defaults: { _controller: TestBundle:Default:name }

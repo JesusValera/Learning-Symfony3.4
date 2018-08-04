@@ -18,6 +18,6 @@ class EventsController extends Controller
         // Find all events from the repository.
         $events = $repository->findAll();
 
-        return $this->render('TestAnnotationsBundle:Events:all.html.twig');
+        return $this->render('TestAnnotationsBundle:Events:all.html.twig', ["events" => $events]);
     }
 }

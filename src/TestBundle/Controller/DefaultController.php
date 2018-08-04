@@ -11,8 +11,13 @@ class DefaultController extends Controller
         return $this->render('TestBundle:Default:index.html.twig');
     }
 
-    public function nameAction($argum)
+    public function indexRAction()
     {
-        return $this->render('TestBundle:Default:name.html.twig', ['argum' => $argum]);
+        return $this->render('TestBundle:Default:index.html.twig');
+    }
+
+    public function nameAction($arg)
+    {
+        return $this->render('TestBundle:Default:name.html.twig', ['arg' => $arg]);
     }
 }
