@@ -1,0 +1,10 @@
+All the companies.
+
+<ul>
+    {% for company in companies %}
+            <li>ID: {{ company.id }}<br>
+                Name: {{ company.name }}<br>
+                City: {{ company.city }}<br>
+                Employees number: {{ company.employeesNumber }}<br></li><br>
+    {% endfor %}
+</ul>
