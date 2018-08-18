@@ -1,0 +1,10 @@
+<p>Form.</p>
+
+{#{{ form(form) }}#}
+
+{#Remove the HTML5 default validation (required tag)
+to check the server-side validation.#}
+{#{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}#}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}

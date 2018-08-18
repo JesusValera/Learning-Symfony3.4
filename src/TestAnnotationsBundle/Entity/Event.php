@@ -3,13 +3,14 @@
 namespace TestAnnotationsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * GENERATE ENTITY:
  * php bin/console doctrine:generate:entity
  *
  * Update Getters & Setters.
- * php bin/console doctrine:generate:entities TestAnnotationsBundle/Entity/Events
+ * php bin/console doctrine:generate:entities TestAnnotationsBundle/Entity/Event
  *
  * [--dump-sql] shows the auto-generated query.
  * php bin/console doctrine:schema:update --dump-sql
@@ -18,12 +19,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 
 /**
- * Events
+ * Event
  *
  * @ORM\Table(name="events")
  * @ORM\Entity(repositoryClass="TestAnnotationsBundle\Repository\EventsRepository")
  */
-class Events
+class Event
 {
     /**
      * @var int
@@ -38,6 +39,8 @@ class Events
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -45,6 +48,9 @@ class Events
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
+     *
+     * @Assert\NotBlank()
+     * @Assert\Type("\DateTime")
      */
     private $date;
 
@@ -52,6 +58,8 @@ class Events
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $city;
 
@@ -77,7 +85,7 @@ class Events
      *
      * @param string $name
      *
-     * @return Events
+     * @return Event
      */
     public function setName($name)
     {
@@ -101,7 +109,7 @@ class Events
      *
      * @param \DateTime $date
      *
-     * @return Events
+     * @return Event
      */
     public function setDate($date)
     {
@@ -125,7 +133,7 @@ class Events
      *
      * @param string $city
      *
-     * @return Events
+     * @return Event
      */
     public function setCity($city)
     {
@@ -149,7 +157,7 @@ class Events
      *
      * @param string $population
      *
-     * @return Events
+     * @return Event
      */
     public function setPopulation($population)
     {

@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TestAnnotationsBundle\Entity\Company;
-use TestAnnotationsBundle\Entity\Events;
+use TestAnnotationsBundle\Entity\Event;
 
 class CompanyController extends Controller
 {

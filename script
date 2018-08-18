@@ -29,5 +29,8 @@
  php bin/console doctrine:database:drop --force
  php bin/console doctrine:database:create
 
-* --
+* Create Form.
+ php bin/console doctrine:generate:form {NameBundle:Class}
 
+
+* --
