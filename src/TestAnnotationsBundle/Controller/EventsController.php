@@ -5,6 +5,7 @@ namespace TestAnnotationsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use TestAnnotationsBundle\Entity\Category;
 use TestAnnotationsBundle\Entity\Event;
 use TestAnnotationsBundle\Form\EventsType;
 
@@ -71,5 +72,32 @@ class EventsController extends Controller
             ["form" => $form->createView()]);
     }
 
+    /**
+     * @Route("/events/new_category", name="new_event_and_category")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function newEventCategory()
+    {
+        // Category
+        $category = new Category();
+        $category->setName("Parties");
+
+        // Event
+        $event = new Event();
+        $event->setName("Marathon 10k Barcelona");
+        $event->setCity("Barcelona");
+        $event->setDate(new \DateTime());
+        $event->setPopulation("1.000");
+        // Set $category into $event.
+        $event->setCategory($category);
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($category);
+        $manager->persist($event);
+        $manager->flush();
+
+        return $this->redirectToRoute("all_events");
+    }
 
 }

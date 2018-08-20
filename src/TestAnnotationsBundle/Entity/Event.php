@@ -71,6 +71,12 @@ class Event
     private $population;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="events")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    private $category;
+
+    /**
      * Get id
      *
      * @return int
@@ -143,6 +149,14 @@ class Event
     }
 
     /**
+     * @param Category $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
      * Get city
      *
      * @return string
@@ -174,5 +188,15 @@ class Event
     public function getPopulation()
     {
         return $this->population;
+    }
+
+    /**
+     * Get category
+     *
+     * @return Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
