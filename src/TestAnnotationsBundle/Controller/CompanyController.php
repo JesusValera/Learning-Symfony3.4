@@ -22,7 +22,9 @@ class CompanyController extends Controller
 
         $companies = $manager->getRepository(Company::class)->findAll();
 
-        return $this->render('TestAnnotationsBundle:Company:all.html.twig', ["companies" => $companies]);
+        return $this->render(
+            'TestAnnotationsBundle:Company:all.html.twig',
+            ["companies" => $companies]);
     }
 
     /**
@@ -33,9 +35,9 @@ class CompanyController extends Controller
     {
         // New company object.
         $company = new Company();
-        $company->setName("Test company One");
-        $company->setEmployeesNumber(100);
-        $company->setCity("Murcia");
+        $company->setName("Test company Two");
+        $company->setEmployeesNumber(103);
+        $company->setCity("Alicante");
 
         // Doctrine object.
         $manager = $this->getDoctrine()->getManager();

@@ -38,7 +38,26 @@ class DefaultController extends Controller
         if ($arg == 'error') {
             throw new NotFoundHttpException("ERROR");
         }
-        return $this->render('TestAnnotationsBundle:Default:name.html.twig', ["arg" => $arg]);
+
+        $names = [
+            'Jesus' => [
+                'name' => 'Jesus',
+                'active' => true,
+            ],
+            'Juan' => [
+                'name' => 'Juan',
+                'active' => false,
+            ],
+            'Jose' => [
+                'name' => 'Jose',
+                'active' => true,
+            ],
+        ];
+
+        return $this->render(
+            'TestAnnotationsBundle:Default:name.html.twig',
+            ["arg" => $arg, "names" => $names]
+        );
     }
 
     /**

@@ -1,8 +1,30 @@
-{% extends '::base.html.twig' %}
+<div class="text">Name</div>
+<img src="{{ asset('favicon.ico') }}"/>
+<br>
 
-{% block body %}
-    <div class="text">Name</div>
-    <img src="{{ asset('favicon.ico') }}" />
-    <br>
-    {{ arg }}
-{% endblock %}
+<p>If usage with Twig.</p>
+{% if arg is defined %}
+    {% if arg=="" %}
+        There is no argument.
+    {% elseif arg=="test" %}
+        The argument is 'test'.
+    {% else %}
+        {{ arg }}
+    {% endif %}
+{% endif %}
+
+<p>For in sequence ..</p>
+{% for i in 0..10 %}
+    * {{ i }}
+{% endfor %}
+
+<p>For in sequence ..</p>
+{% for i in 'a'|upper..'z'|upper %}
+    * {{ i }}
+{% endfor %}
+
+<p>For & If usage with Twig.</p>
+{% for name in names if name.active %}
+    <li>{{ name.name }}</li>
+{% endfor %}
+
