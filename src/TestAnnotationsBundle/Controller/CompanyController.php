@@ -3,6 +3,7 @@
 namespace TestAnnotationsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -51,6 +52,7 @@ class CompanyController extends Controller
 
     /**
      * @Route("/company/get/{id}", name="get_company")
+     * @Method({"GET"})
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -74,6 +76,7 @@ class CompanyController extends Controller
     public function getCompanyByNameAction($name)
     {
         $repository = $this->getDoctrine()->getRepository(Company::class);
+        /** @var Company $company */
         // findOneBy{attribute name in CamelCase}->()
         $company = $repository->findOneByName($name);
 
