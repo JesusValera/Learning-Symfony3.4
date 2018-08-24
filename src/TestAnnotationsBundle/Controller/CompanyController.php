@@ -5,6 +5,7 @@ namespace TestAnnotationsBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TestAnnotationsBundle\Entity\Company;
@@ -47,17 +48,28 @@ class CompanyController extends Controller
         // Save the changes into DB.
         $manager->flush();
 
-        return $this->render('TestAnnotationsBundle:Company:createcompany.html.twig', ["company" => $company]);
+        return $this->render(
+            'TestAnnotationsBundle:Company:createcompany.html.twig',
+            ["company" => $company]);
     }
 
     /**
-     * @Route("/company/get/{id}", name="get_company")
+     * @Route("/{_locale}/company/get/{id}", name="get_company",
+     *     defaults={"_locale": "en"},
+     *     requirements={
+     *          "_locale": "en|es"}
+     *     )
      * @Method({"GET"})
+     * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getCompanyAction($id = 0)
+    public function getCompanyAction(Request $request, $id = 0)
     {
+        // Get language.
+        $locale = $request->getLocale();
+
+
         $repository = $this->getDoctrine()->getRepository(Company::class);
         $company = $repository->find($id);
 
@@ -65,7 +77,9 @@ class CompanyController extends Controller
             throw new NotFoundHttpException("There is no company whose id is: $id");
         }
 
-        return $this->render('TestAnnotationsBundle:Company:getcompany.html.twig', ["company" => $company]);
+        return $this->render(
+            'TestAnnotationsBundle:Company:getcompany.html.twig',
+            ["locale" => $locale, "company" => $company]);
     }
 
     /**
@@ -84,7 +98,8 @@ class CompanyController extends Controller
             throw new NotFoundHttpException("There is no company whose name is: $name");
         }
 
-        return new Response("Company with name $name has a city '{$company->getCity()}' and there are '{$company->getEmployeesNumber()}' employees.");
+        return new Response("Company with name $name has a city '{$company->getCity()}' 
+            and there are '{$company->getEmployeesNumber()}' employees.");
     }
 
     /**
