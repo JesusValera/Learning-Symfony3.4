@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * @Route("/annotations")
+ * @Route("annotations")
  */
 class DefaultController extends Controller
 {

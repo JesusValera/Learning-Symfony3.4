@@ -136,4 +136,9 @@ class Team
     {
         return $this->coaches;
     }
+
+    public function __toString()
+    {
+        return $this->id . " - " . $this->getName();
+    }
 }

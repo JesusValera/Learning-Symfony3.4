@@ -17,12 +17,11 @@ class EventsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
+        $builder->add('name')
             ->add('date', DateType::class, ['widget' => 'single_text'])
-            ->add('city', null, ['label'  => 'CITY'])
+            ->add('city', null, ['label' => 'CITY'])
             ->add('population', IntegerType::class, ['required' => false])
-            ->add('agreeTerms', CheckboxType::class, array('mapped' => false))
+            ->add('agreeTerms', CheckboxType::class, ['mapped' => false])
             ->add('save', SubmitType::class);
     }
 
