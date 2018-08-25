@@ -28,9 +28,9 @@ class EventsController extends Controller
         // Find all events from the repository.
         $events = $repository->findAll();
 
-        return $this->render(
-            'TestAnnotationsBundle:Event:all.html.twig',
-            ["events" => $events]);
+        return $this->render('TestAnnotationsBundle:Event:all.html.twig', [
+            "events" => $events,
+        ]);
     }
 
     /**
@@ -74,9 +74,9 @@ class EventsController extends Controller
         }
 
         // The createView() method should be called after handleRequest().
-        return $this->render(
-            'TestAnnotationsBundle:Event:form.html.twig',
-            ["form" => $form->createView()]);
+        return $this->render('TestAnnotationsBundle:Event:form.html.twig', [
+            "form" => $form->createView(),
+        ]);
     }
 
     /**

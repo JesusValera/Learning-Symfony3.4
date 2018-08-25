@@ -1,7 +1,7 @@
 * START/STOP.. SERVER.
  php bin/console server:start // log/run/start/status/stop
 
-* CLEAR CACHE PRODUCTION.
+* CLEAR PRODUCTION CACHE.
  php bin/console cache:clear --env=prod
 
 * SEE ALL CURRENT ROUTES.
@@ -13,21 +13,24 @@
 ** GENERATE ENTITY:
  php bin/console doctrine:generate:entity
 
-* Update Getters & Setters.
+* UPDATE GETTERS AND SETTERS FROM ENTITY.
  php bin/console doctrine:generate:entities TestAnnotationsBundle/Entity/Events
 
 * [--dump-sql] shows the auto-generated query.
  php bin/console doctrine:schema:update --dump-sql
+_________________________
+* ORM -> Doctrine.
 
-* Creating the tables.
+** Creating the database.
  php bin/console doctrine:database:create
  php bin/console doctrine:database:drop --force
+
+** Creating the schemas.
  php bin/console doctrine:schema:create
- php bin/console doctrine:schema:update --force
 
-* Recreate the database.
- php bin/console doctrine:database:drop --force
- php bin/console doctrine:database:create
+** Updating the schemas.
+ php bin/console doctrine:schema:update --force
+_________________________
 
 * Create Form.
  php bin/console doctrine:generate:form {NameBundle:Class}

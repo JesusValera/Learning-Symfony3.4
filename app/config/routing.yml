@@ -1,3 +1,11 @@
+test_annotations_team:
+    resource: "@TestAnnotationsBundle/Controller/TeamController.php"
+    type:     annotation
+
+test_annotations_coach:
+    resource: "@TestAnnotationsBundle/Controller/CoachController.php"
+    type:     annotation
+
 test_annotations_category:
     resource: "@TestAnnotationsBundle/Controller/CategoryController.php"
     type:     annotation

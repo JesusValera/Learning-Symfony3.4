@@ -54,10 +54,10 @@ class DefaultController extends Controller
             ],
         ];
 
-        return $this->render(
-            'TestAnnotationsBundle:Default:name.html.twig',
-            ["arg" => $arg, "names" => $names]
-        );
+        return $this->render('TestAnnotationsBundle:Default:name.html.twig', [
+            "arg" => $arg,
+            "names" => $names
+            ]);
     }
 
     /**

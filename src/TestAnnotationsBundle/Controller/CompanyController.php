@@ -23,9 +23,9 @@ class CompanyController extends Controller
 
         $companies = $manager->getRepository(Company::class)->findAll();
 
-        return $this->render(
-            'TestAnnotationsBundle:Company:all.html.twig',
-            ["companies" => $companies]);
+        return $this->render('TestAnnotationsBundle:Company:all.html.twig', [
+            "companies" => $companies,
+        ]);
     }
 
     /**
@@ -55,9 +55,9 @@ class CompanyController extends Controller
         // Save the changes into DB.
         $manager->flush();
 
-        return $this->render(
-            'TestAnnotationsBundle:Company:createcompany.html.twig',
-            ["company" => $company]);
+        return $this->render('TestAnnotationsBundle:Company:createcompany.html.twig', [
+            "company" => $company,
+        ]);
     }
 
     /**
@@ -83,9 +83,10 @@ class CompanyController extends Controller
             throw new NotFoundHttpException("There is no company whose id is: $id");
         }
 
-        return $this->render(
-            'TestAnnotationsBundle:Company:getcompany.html.twig',
-            ["locale" => $locale, "company" => $company]);
+        return $this->render('TestAnnotationsBundle:Company:getcompany.html.twig', [
+            "locale"  => $locale,
+            "company" => $company,
+        ]);
     }
 
     /**
