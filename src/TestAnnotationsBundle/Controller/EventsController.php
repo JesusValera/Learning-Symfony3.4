@@ -3,7 +3,9 @@
 namespace TestAnnotationsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use TestAnnotationsBundle\Entity\Category;
 use TestAnnotationsBundle\Entity\Event;
@@ -11,6 +13,11 @@ use TestAnnotationsBundle\Form\EventsType;
 
 class EventsController extends Controller
 {
+    const NO_CONTENT = 'No content.';
+    const BAD_NAME_EVENT = 'No name event.';
+    const BAD_NAME_EVENT_HELP = 'No name event HELP.';
+    const NO_ALL_ELEMENTS = 'Missing elements.';
+
     /**
      * @Route("/events/all", name="all_events")
      */
@@ -74,10 +81,9 @@ class EventsController extends Controller
 
     /**
      * @Route("/events/new_category", name="new_event_and_category")
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newEventCategory()
+    public function newEventCategoryAction()
     {
         // Category
         $category = new Category();
@@ -98,6 +104,81 @@ class EventsController extends Controller
         $manager->flush();
 
         return $this->redirectToRoute("all_events");
+    }
+
+    /**
+     * @Route("/api/events/{name}", name="api_get", defaults={"name"="undefined"})
+     * @Method({"GET"})
+     * @param string $name
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function apiGetAction($name = "undefined")
+    {
+        if ($name == "undefined") {
+            return new JsonResponse($this->badRequest(self::BAD_NAME_EVENT, self::BAD_NAME_EVENT_HELP), 400);
+        }
+
+        $repository = $this->getDoctrine()->getRepository(Event::class);
+        $event = $repository->findOneByName($name);
+
+        if (!isset($event)) {
+            return new JsonResponse($this->badRequest(self::NO_CONTENT, "Event not found"), 200);
+        }
+
+        $data['events'][] = $this->serializeEvent($event);
+
+        return new JsonResponse($data, 200);
+    }
+
+    /**
+     * @param string $msg
+     * @param string|null $help
+     * @return array
+     */
+    private function badRequest($msg, $help = null)
+    {
+        return ['message' => $msg, 'help' => $help];
+    }
+
+    /**
+     * @Route("/api/events", name="api_post")
+     * @Method({"POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function apiPostAction(Request $request)
+    {
+        // Check the Not_null values are all filled.
+        if ($request->get('name') == null || $request->get('city') == null ||
+            $request->get('population') == null) {
+
+            return new JsonResponse($this->badRequest(self::NO_ALL_ELEMENTS, ""), 400);
+        }
+
+        $event = new Event();
+        $event->setName($request->get('name'));
+        $event->setCity($request->get('city'));
+        $event->setPopulation($request->get('population'));
+        $event->setDate(new \DateTime());
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($event);
+        $manager->flush();
+
+        // Return the created event.
+        $data['events'][] = $this->serializeEvent($event);
+
+        return new JsonResponse($data, 200);
+    }
+
+    private function serializeEvent(Event $event)
+    {
+        return [
+            'name'     => $event->getName(),
+            'city'     => $event->getCity(),
+            'category' => $event->getCategory(),
+            'date'     => $event->getDate(),
+        ];
     }
 
 }

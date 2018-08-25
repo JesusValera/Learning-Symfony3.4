@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use TestAnnotationsBundle\Entity\Company;
-use TestAnnotationsBundle\Entity\Event;
 
 class CompanyController extends Controller
 {
@@ -30,16 +29,24 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/create", name="create_company")
+     * @Route("/company/create/{name}/{city}/{empNumber}", name="create_company",
+     *  defaults={
+     *     "name"="Another company",
+     *     "city" = "Wonderland",
+     *     "empNumber" = 1}
+     *   )
+     * @param string $name
+     * @param string $city
+     * @param int $empNumber
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function createCompanyAction()
+    public function createCompanyAction($name = "Another company", $city = "Wonderland", $empNumber = 1)
     {
         // New company object.
         $company = new Company();
-        $company->setName("Test company Two");
-        $company->setEmployeesNumber(103);
-        $company->setCity("Alicante");
+        $company->setName($name);
+        $company->setCity($city);
+        $company->setEmployeesNumber($empNumber);
 
         // Doctrine object.
         $manager = $this->getDoctrine()->getManager();
@@ -54,11 +61,10 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/{_locale}/company/get/{id}", name="get_company",
-     *     defaults={"_locale": "en"},
-     *     requirements={
-     *          "_locale": "en|es"}
-     *     )
+     * @Route("/company/get/{id}", name="get_company")
+     * @Route("/{_locale}/company/get/{id}", name="get_company_lan",
+     *     defaults={"_locale"="en"},
+     *     requirements={"_locale": "en|es"})
      * @Method({"GET"})
      * @param Request $request
      * @param int $id
@@ -116,7 +122,7 @@ class CompanyController extends Controller
 
         // 2. Check if the object exists.
         if (!isset($company)) {
-            throw $this->createNotFoundException("Check out if the id and name values are valid.");
+            throw $this->createNotFoundException("Check if the id and name values are valid.");
         }
 
         // 3. Update the object.
