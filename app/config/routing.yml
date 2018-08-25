@@ -1,3 +1,7 @@
+test_annotations_category:
+    resource: "@TestAnnotationsBundle/Controller/CategoryController.php"
+    type:     annotation
+
 app:
   resource: '@AppBundle/Controller/'
   type: annotation

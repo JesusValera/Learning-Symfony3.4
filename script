@@ -32,5 +32,7 @@
 * Create Form.
  php bin/console doctrine:generate:form {NameBundle:Class}
 
+* Create CRUD.
+ php bin/console generate:doctrine:crud
 
 * --

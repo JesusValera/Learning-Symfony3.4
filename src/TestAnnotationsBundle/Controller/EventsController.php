@@ -13,9 +13,9 @@ use TestAnnotationsBundle\Form\EventsType;
 
 class EventsController extends Controller
 {
-    const NO_CONTENT = 'No content.';
-    const BAD_NAME_EVENT = 'No name event.';
-    const BAD_NAME_EVENT_HELP = 'No name event HELP.';
+    const NO_CONTENT = 'No content found.';
+    const BAD_NAME_EVENT = 'There is no event with that name.';
+    const BAD_NAME_EVENT_HELP = 'Check your typo name.';
     const NO_ALL_ELEMENTS = 'Missing elements.';
 
     /**
@@ -125,7 +125,7 @@ class EventsController extends Controller
             return new JsonResponse($this->badRequest(self::NO_CONTENT, "Event not found"), 200);
         }
 
-        $data['events'][] = $this->serializeEvent($event);
+        $data['event'][] = $this->serializeEvent($event);
 
         return new JsonResponse($data, 200);
     }
@@ -166,7 +166,7 @@ class EventsController extends Controller
         $manager->flush();
 
         // Return the created event.
-        $data['events'][] = $this->serializeEvent($event);
+        $data['event'][] = $this->serializeEvent($event);
 
         return new JsonResponse($data, 200);
     }
