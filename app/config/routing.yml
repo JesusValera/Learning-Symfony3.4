@@ -1,13 +1,13 @@
-test_annotations_team:
-    resource: "@TestAnnotationsBundle/Controller/TeamController.php"
+app_team:
+    resource: "@AppBundle/Controller/TeamController.php"
     type:     annotation
 
-test_annotations_coach:
-    resource: "@TestAnnotationsBundle/Controller/CoachController.php"
+app_coach:
+    resource: "@AppBundle/Controller/CoachController.php"
     type:     annotation
 
-test_annotations_category:
-    resource: "@TestAnnotationsBundle/Controller/CategoryController.php"
+app_category:
+    resource: "@AppBundle/Controller/CategoryController.php"
     type:     annotation
 
 app:
@@ -22,7 +22,4 @@ test_2:
   resource: "@TestBundle/Resources/config/routing2.yml"
   prefix:   /test2
 
-test_annotations:
-  resource: "@TestAnnotationsBundle/Controller/"
-  type:     annotation
-  prefix:   /
+

@@ -1,0 +1,35 @@
+{% extends 'company/body.html.twig' %}
+
+{% block center %}
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Employees number</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td>ID: {{ company.id }}</td>
+                <td>Name: {{ company.name }}</td>
+                <td>City: {{ company.city }}</td>
+                <td>Employees number: {{ company.employeesNumber }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block menu %}
+    <div class="sidebar" id="sidebar">
+        <div class="list-group">
+            <a href="#" class="list-group-item active">I'm the Sidebar</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+        </div>
+    </div>
+{% endblock %}
