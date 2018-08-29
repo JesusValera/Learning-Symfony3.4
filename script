@@ -1,3 +1,6 @@
+* CREATE NEW PROJECT.
+ composer create-project symfony/framework-standard-edition {PROJ_NAME} "3.4.*"
+
 * START/STOP.. SERVER.
  php bin/console server:start // log/run/start/status/stop
 
@@ -7,10 +10,10 @@
 * SEE ALL CURRENT ROUTES.
  php bin/console debug:router
 
-* GENERATE BUNDLE (It's not recommendable to use in versions later to 3.4).
+* GENERATE BUNDLE (It's not recommendable in more versions recent versions of 3.3).
  php app/console generate:bundle --namespace=Acme/TestBundle
 
-** GENERATE ENTITY:
+** GENERATE ENTITY.
  php bin/console doctrine:generate:entity
 
 * UPDATE GETTERS AND SETTERS FROM ENTITY.
@@ -33,7 +36,7 @@ _________________________
 _________________________
 
 * Create Form.
- php bin/console doctrine:generate:form {NameBundle:Class}
+ php bin/console doctrine:generate:form {BundleName:ClassName}
 
 * Create CRUD.
  php bin/console generate:doctrine:crud
