@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraint as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -17,26 +17,36 @@ class User implements UserInterface
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
-     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
     /**
      * @var string|null
+     *
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -45,13 +55,15 @@ class User implements UserInterface
      */
     private $password;
 
-
     /**
-     * @var string
-     * @Assert\NotBlank()
-     * @Assert\Length(max=4096)
+     * @ORM\Column(name="roles", type="array")
      */
-    private $plainPassword;
+    private $roles;
+
+    public function __construct()
+    {
+        $this->roles = ['ROLE_USER'];
+    }
 
     /**
      * Get id.
@@ -146,6 +158,18 @@ class User implements UserInterface
     }
 
     /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
      * Returns the roles granted to the user.
      *
      * <code>
@@ -163,19 +187,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
-    }
-
-    /**
-     * Returns the salt that was originally used to encode the password.
-     *
-     * This can return null if the password was not encoded using a salt.
-     *
-     * @return string|null The salt
-     */
-    public function getSalt()
-    {
-        return null;
+        return $this->roles;
     }
 
     /**
