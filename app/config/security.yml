@@ -29,9 +29,20 @@ security:
     admin:
       pattern: ^/admin
       http_basic: ~
+      logout_on_user_change: true
+
+    users:
+      pattern: ^/users
+      anonymous: ~
+      provider: in_memory
+      form_login:
+        login_path: /users/login
+        check_path: /users/login
+      logout_on_user_change: true
 
     main:
       anonymous: ~
+      logout_on_user_change: true
       # activate different ways to authenticate
 
       # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
@@ -43,3 +54,5 @@ security:
   access_control:
     # require ROLE_ADMIN for /admin*
 #    - { path: ^/admin, roles: ROLE_ADMIN }
+    - {path: ^/users/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - {path: ^/users, roles: ROLE_ADMIN }
