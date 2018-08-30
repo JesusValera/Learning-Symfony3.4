@@ -4,11 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CompanyController extends Controller
 {
@@ -61,11 +60,10 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/get/{id}", name="get_company")
-     * @Route("/{_locale}/company/get/{id}", name="get_company_lan",
+     * @Route("/company/get/{id}", name="get_company", methods={"GET"})
+     * @Route("/{_locale}/company/get/{id}", methods={"GET"}, name="get_company_lan",
      *     defaults={"_locale"="en"},
      *     requirements={"_locale": "en|es"})
-     * @Method({"GET"})
      * @param Request $request
      * @param int $id
      * @return \Symfony\Component\HttpFoundation\Response

@@ -38,6 +38,9 @@ security:
       form_login:
         login_path: /users/login
         check_path: /users/login
+      logout:
+        path:   /users/logout
+        target: /users
       logout_on_user_change: true
 
     main:
@@ -52,7 +55,6 @@ security:
       #form_login: ~
 
   access_control:
-    # require ROLE_ADMIN for /admin*
-#    - { path: ^/admin, roles: ROLE_ADMIN }
+    # require ROLE_ADMIN for /users/admin*
     - {path: ^/users/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - {path: ^/users, roles: ROLE_ADMIN }
+    - {path: ^/users/admin, roles: ROLE_ADMIN }

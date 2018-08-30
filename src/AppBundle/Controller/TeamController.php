@@ -5,9 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Team;
 use AppBundle\Form\TeamType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Team controller.
@@ -19,8 +18,7 @@ class TeamController extends Controller
     /**
      * Lists all team entities.
      *
-     * @Route("/", name="team_index")
-     * @Method("GET")
+     * @Route("/", name="team_index", methods={"GET"})
      */
     public function indexAction()
     {
@@ -36,8 +34,7 @@ class TeamController extends Controller
     /**
      * Creates a new team entity.
      *
-     * @Route("/new", name="team_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", name="team_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -64,8 +61,7 @@ class TeamController extends Controller
     /**
      * Finds and displays a team entity.
      *
-     * @Route("/{id}", name="team_show")
-     * @Method("GET")
+     * @Route("/{id}", name="team_show", methods={"GET"})
      * @param Team $team
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -82,8 +78,7 @@ class TeamController extends Controller
     /**
      * Displays a form to edit an existing team entity.
      *
-     * @Route("/{id}/edit", name="team_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="team_edit", methods={"GET", "POST"})
      * @param Request $request
      * @param Team $team
      * @return \Symfony\Component\HttpFoundation\Response
@@ -110,8 +105,7 @@ class TeamController extends Controller
     /**
      * Deletes a team entity.
      *
-     * @Route("/{id}", name="team_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="team_delete", methods={"DELETE"})
      * @param Request $request
      * @param Team $team
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

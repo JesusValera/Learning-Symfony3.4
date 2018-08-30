@@ -86,7 +86,6 @@ class DefaultController extends Controller
         return $this->redirectToRoute('homepage');
     }
 
-
     /**
      * @Route("/register", name="user_registration")
      * @param Request $request
@@ -149,7 +148,16 @@ class DefaultController extends Controller
      */
     public function usersAction()
     {
-        return $this->redirectToRoute('homepage');
+        return $this->render('security/index.html.twig');
+    }
+
+    /**
+     * @Route("/users/admin", name="admin_index")
+     * @return Response
+     */
+    public function adminAction()
+    {
+        return $this->render('security/admin.html.twig');
     }
 
 }

@@ -5,9 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Category;
 use AppBundle\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Category controller.
@@ -20,8 +19,7 @@ class CategoryController extends Controller
     /**
      * Lists all Category entities.
      *
-     * @Route("/", name="category_index")
-     * @Method("GET")
+     * @Route("/", name="category_index", methods={"GET"})
      */
     public function indexAction()
     {
@@ -37,8 +35,7 @@ class CategoryController extends Controller
     /**
      * Creates a new Category entity.
      *
-     * @Route("/new", name="category_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", name="category_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -65,8 +62,7 @@ class CategoryController extends Controller
     /**
      * Finds and displays a Category entity.
      *
-     * @Route("/{id}", name="category_show")
-     * @Method("GET")
+     * @Route("/{id}", name="category_show", methods={"GET"})
      * @param Category $category
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -83,8 +79,7 @@ class CategoryController extends Controller
     /**
      * Displays a form to edit an existing Category entity.
      *
-     * @Route("/{id}/edit", name="category_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="category_edit", methods={"GET", "POST"})
      * @param Request $request
      * @param Category $category
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
@@ -111,8 +106,7 @@ class CategoryController extends Controller
     /**
      * Deletes a Category entity.
      *
-     * @Route("/{id}", name="category_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="category_delete", methods={"DELETE"})
      * @param Request $request
      * @param Category $category
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

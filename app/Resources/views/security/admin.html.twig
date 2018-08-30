@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Hello world!</h2>
+
+    <p>Private area.</p>
+
+    <a href={{ absolute_url("/users") }}>Free area</a>
+    <a href={{ absolute_url("/users/logout") }}>Logout</a>
+
+{% endblock %}

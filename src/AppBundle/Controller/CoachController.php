@@ -5,9 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Coach;
 use AppBundle\Form\CoachType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Coach controller.
@@ -19,8 +18,7 @@ class CoachController extends Controller
     /**
      * Lists all coach entities.
      *
-     * @Route("/", name="coach_index")
-     * @Method("GET")
+     * @Route("/", name="coach_index", methods={"GET"})
      */
     public function indexAction()
     {
@@ -36,8 +34,7 @@ class CoachController extends Controller
     /**
      * Creates a new coach entity.
      *
-     * @Route("/new", name="coach_new")
-     * @Method({"GET", "POST"})
+     * @Route("/new", name="coach_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -64,8 +61,7 @@ class CoachController extends Controller
     /**
      * Finds and displays a coach entity.
      *
-     * @Route("/{id}", name="coach_show")
-     * @Method("GET")
+     * @Route("/{id}", name="coach_show", methods={"GET"})
      * @param Coach $coach
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -82,8 +78,7 @@ class CoachController extends Controller
     /**
      * Displays a form to edit an existing coach entity.
      *
-     * @Route("/{id}/edit", name="coach_edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", name="coach_edit", methods={"GET", "POST"})
      * @param Request $request
      * @param Coach $coach
      * @return \Symfony\Component\HttpFoundation\Response
@@ -110,8 +105,7 @@ class CoachController extends Controller
     /**
      * Deletes a coach entity.
      *
-     * @Route("/{id}", name="coach_delete")
-     * @Method("DELETE")
+     * @Route("/{id}", name="coach_delete", methods={"DELETE"})
      * @param Request $request
      * @param Coach $coach
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Hello world!</h2>
+
+    <p>Free area.</p>
+
+    <a href={{ absolute_url("/users/admin") }}>Admin zone</a>
+    <a href={{ absolute_url("/users/logout") }}>Logout</a>
+
+{% endblock %}

@@ -6,10 +6,9 @@ use AppBundle\Entity\Category;
 use AppBundle\Entity\Event;
 use AppBundle\Form\EventsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class EventsController extends Controller
 {
@@ -107,8 +106,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/api/events/{name}", name="api_get", defaults={"name"="undefined"})
-     * @Method({"GET"})
+     * @Route("/api/events/{name}", name="api_get", defaults={"name"="undefined"}, methods={"GET"})
      * @param string $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -141,8 +139,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/api/events", name="api_post")
-     * @Method({"POST"})
+     * @Route("/api/events", name="api_post", methods={"POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
