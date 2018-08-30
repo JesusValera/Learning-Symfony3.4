@@ -10,18 +10,25 @@
 * SEE ALL CURRENT ROUTES.
  php bin/console debug:router
 
-* GENERATE BUNDLE (It's not recommendable in more versions recent versions of 3.3).
- php app/console generate:bundle --namespace=Acme/TestBundle
+* GENERATE BUNDLE (It's not recommendable in versions up to 3.3).
+ php app/console generate:bundle --namespace={Acme/TestBundle}
 
-** GENERATE ENTITY.
+* GENERATE CONTROLLER.
+ php bin/console generate:controller
+
+* GENERATE ENTITY.
  php bin/console doctrine:generate:entity
 
 * UPDATE GETTERS AND SETTERS FROM ENTITY.
- php bin/console doctrine:generate:entities TestAnnotationsBundle/Entity/Events
+ php bin/console doctrine:generate:entities {BundleName}/Entity/{ClassName}
 
-* [--dump-sql] shows the auto-generated query.
- php bin/console doctrine:schema:update --dump-sql
-_________________________
+* CREATE FORM (+ClassType.php).
+ php bin/console doctrine:generate:form {BundleName:ClassName}
+
+* CREATE CRUD.
+ php bin/console generate:doctrine:crud
+
+__________________________________________________
 * ORM -> Doctrine.
 
 ** Creating the database.
@@ -33,12 +40,9 @@ _________________________
 
 ** Updating the schemas.
  php bin/console doctrine:schema:update --force
-_________________________
 
-* Create Form.
- php bin/console doctrine:generate:form {BundleName:ClassName}
-
-* Create CRUD.
- php bin/console generate:doctrine:crud
+*** Replace --force by --dump-sql to see the auto-generated query.
+ php bin/console doctrine:schema:update --dump-sql
+__________________________________________________
 
 * --

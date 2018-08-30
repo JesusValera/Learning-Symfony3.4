@@ -56,9 +56,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(name="roles", type="array")
+     * @ORM\Column(name="roles", type="json_array")
      */
-    private $roles;
+    private $roles = [];
 
     public function __construct()
     {
