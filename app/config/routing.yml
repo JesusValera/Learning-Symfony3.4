@@ -1,15 +1,3 @@
-app_team:
-    resource: "@AppBundle/Controller/TeamController.php"
-    type:     annotation
-
-app_coach:
-    resource: "@AppBundle/Controller/CoachController.php"
-    type:     annotation
-
-app_category:
-    resource: "@AppBundle/Controller/CategoryController.php"
-    type:     annotation
-
 app:
   resource: '@AppBundle/Controller/'
   type: annotation

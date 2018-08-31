@@ -29,10 +29,10 @@ class UserType extends AbstractType
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
             ])
-            ->add('termsAccepted', CheckboxType::class, array(
-                'mapped' => false,
+            ->add('termsAccepted', CheckboxType::class, [
+                'mapped'      => false,
                 'constraints' => new IsTrue(),
-            ))
+            ])
             ->add('submit', SubmitType::class)
             ->add('reset', ResetType::class);
     }

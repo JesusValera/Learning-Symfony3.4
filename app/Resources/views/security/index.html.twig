@@ -5,7 +5,30 @@
 
     <p>Free area.</p>
 
-    <a href={{ absolute_url("/users/admin") }}>Admin zone</a>
-    <a href={{ absolute_url("/users/logout") }}>Logout</a>
+    <h3>Hello {{ app.user.username|default('anon')|upper }}.</h3>
+    <h3>
+        {% if app.user.roles is defined %}
+            Roles:<br>
+            {% for role in app.user.roles %}
+                * {{ role|e }}<br>
+            {% endfor %}
+        {% else %}
+            No roles.
+        {% endif %}
+    </h3>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href={{ absolute_url("/users/admin") }}>Admin zone</a>
+    {% endif %}
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <a href={{ absolute_url("/users/logout") }}>Logout</a>
+    {% else %}
+        <a href={{ absolute_url("/users/login") }}>Login</a>
+        {% if not app.user %}
+            or
+            <a href={{ absolute_url("/users/register") }}>Register</a>
+        {% endif %}
+    {% endif %}
 
 {% endblock %}

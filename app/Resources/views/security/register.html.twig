@@ -8,4 +8,6 @@
     {{ form_row(form.plainPassword.second) }}
 
     {{ form_end(form) }}
+
+    <br><a href={{ absolute_url("/users/login") }}>Login</a>
 {% endblock %}

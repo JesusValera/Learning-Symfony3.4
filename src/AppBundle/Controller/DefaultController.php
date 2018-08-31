@@ -87,7 +87,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/register", name="user_registration")
+     * @Route("/users/register", name="user_registration")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
@@ -118,7 +118,7 @@ class DefaultController extends Controller
         }
 
         return $this->render(
-            'registration/register.html.twig',
+            'security/register.html.twig',
             ['form' => $form->createView()]
         );
     }

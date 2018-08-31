@@ -12,9 +12,25 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="_password"/>
 
-        {# Controlling the URL the user is redirected to on success #}
+        {# The next line is used to redirect the user on success. #}
         <input type="hidden" name="_target_path" value="{{ path('user_index') }}"/>
 
         <button type="submit">Login</button>
     </form>
+
+    <h2>In memory:</h2>
+    User: 'ryan'<br>
+    Password: 'ryanpass'<br>
+    <br>
+    Admin: 'admin'<br>
+    Password: 'kitten'
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <br><br><a href={{ absolute_url("/users") }}>Free area</a>
+    {% endif %}
+
+    {% if not app.user %}
+        <br><br><a href={{ absolute_url("/users/register") }}>Register</a>
+    {% endif %}
+
 {% endblock %}

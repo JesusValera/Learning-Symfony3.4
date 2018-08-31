@@ -9,10 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/company")
+ */
 class CompanyController extends Controller
 {
     /**
-     * @Route("/company/all", name="all_company")
+     * @Route("/all", name="all_company")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function allCompanyAction()
@@ -28,7 +31,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/create/{name}/{city}/{empNumber}", name="create_company",
+     * @Route("/create/{name}/{city}/{empNumber}", name="create_company",
      *  defaults={
      *     "name"="Another company",
      *     "city" = "Wonderland",
@@ -60,7 +63,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/get/{id}", name="get_company", methods={"GET"})
+     * @Route("/get/{id}", name="get_company", methods={"GET"})
      * @Route("/{_locale}/company/get/{id}", methods={"GET"}, name="get_company_lan",
      *     defaults={"_locale"="en"},
      *     requirements={"_locale": "en|es"})
@@ -88,7 +91,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/getname/{name}", name="get_name_company")
+     * @Route("/getname/{name}", name="get_name_company")
      * @param string $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -108,7 +111,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/company/update/{id}/{city}", name="update_company")
+     * @Route("/update/{id}/{city}", name="update_company")
      * @param $id
      * @param $city
      * @return \Symfony\Component\HttpFoundation\Response
