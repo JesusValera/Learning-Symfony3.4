@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/events")
+ */
 class EventsController extends Controller
 {
     const NO_CONTENT = 'No content found.';
@@ -18,7 +21,7 @@ class EventsController extends Controller
     const NO_ALL_ELEMENTS = 'Missing elements.';
 
     /**
-     * @Route("/events/all", name="all_events")
+     * @Route("/", name="all_events")
      */
     public function allAction()
     {
@@ -33,7 +36,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/events/new", name="new_events")
+     * @Route("/new", name="new_events")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -79,7 +82,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/events/new_category", name="new_event_and_category")
+     * @Route("/new_category", name="new_event_and_category")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newEventCategoryAction()
@@ -106,7 +109,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/api/events/{name}", name="api_get", defaults={"name"="undefined"}, methods={"GET"})
+     * @Route("/api/{name}", name="api_get", defaults={"name"="undefined"}, methods={"GET"})
      * @param string $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -139,7 +142,7 @@ class EventsController extends Controller
     }
 
     /**
-     * @Route("/api/events", name="api_post", methods={"POST"})
+     * @Route("/api", name="api_post", methods={"POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

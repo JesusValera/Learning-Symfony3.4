@@ -37,7 +37,7 @@ class Team
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Coach", inversedBy="teams")
+     * @ORM\ManyToMany(targetEntity="Coach", mappedBy="teams")
      */
     private $coaches;
 

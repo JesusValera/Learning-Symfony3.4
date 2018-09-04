@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompanyController extends Controller
 {
     /**
-     * @Route("/all", name="all_company")
+     * @Route("/", name="all_company")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function allCompanyAction()
@@ -91,7 +91,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/getname/{name}", name="get_name_company")
+     * @Route("/name/{name}", name="get_name_company")
      * @param string $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
