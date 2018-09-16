@@ -64,7 +64,7 @@ class CompanyController extends Controller
 
     /**
      * @Route("/get/{id}", name="get_company", methods={"GET"})
-     * @Route("/{_locale}/company/get/{id}", methods={"GET"}, name="get_company_lan",
+     * @Route("/{_locale}/get/{id}", methods={"GET"}, name="get_company_lan",
      *     defaults={"_locale"="en"},
      *     requirements={"_locale": "en|es"})
      * @param Request $request
@@ -84,7 +84,7 @@ class CompanyController extends Controller
             throw new NotFoundHttpException("There is no company whose id is: $id");
         }
 
-        return $this->render('company/getcompany.html.twig', [
+        return $this->render('company/infocompany.html.twig', [
             "locale"  => $locale,
             "company" => $company,
         ]);
