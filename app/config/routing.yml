@@ -4,11 +4,11 @@ app:
 
 test:
   resource: "@TestBundle/Resources/config/routing.yml"
-  prefix:   /test
+  prefix:   /bundle_yml
 
 test_2:
   resource: "@TestBundle/Resources/config/routing2.yml"
-  prefix:   /test2
+  prefix:   /bundle_yml2
 
 logout:
   path: /users/logout

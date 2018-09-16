@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -25,68 +24,4 @@ class DefaultController extends Controller
         //return $this->render('TestAnnotationsBundle:Default:index.html.twig');
     }
 
-    /**
-     * @Route("/response", name="annoR_index")
-     */
-    public function indexRAction()
-    {
-        return new Response("<html><head><title>Response</title><body>Testing response.</body></head></html>");
-    }
-
-    /**
-     * @Route("/name/{arg}", name="action_name")
-     * @param string $arg
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function nameAction($arg = 'Any argument.')
-    {
-        if ($arg == 'error') {
-            throw new NotFoundHttpException("ERROR");
-        }
-
-        $names = [
-            'Jesus' => [
-                'name'   => 'Jesus',
-                'active' => true,
-            ],
-            'Juan'  => [
-                'name'   => 'Juan',
-                'active' => false,
-            ],
-            'Jose'  => [
-                'name'   => 'Jose',
-                'active' => true,
-            ],
-        ];
-
-        return $this->render('default/name.html.twig', [
-            "arg"   => $arg,
-            "names" => $names,
-        ]);
-    }
-
-    /**
-     * @Route("/example", name="action_example")
-     */
-    public function exampleAction()
-    {
-        return $this->render('default/example.html.twig');
-    }
-
-    /**
-     * @Route("/redirection", name="action_redirect")
-     */
-    public function redirectionAction()
-    {
-        //return $this->redirect($this->generateUrl('homepage'));
-        return $this->redirectToRoute('homepage');
-    }
-
-    /**
-     * @Route("/register", name="register")
-     */
-    public function registerAction()
-    {
-        return new Response("<body><h1>Hello person.</h1><a><a href='/'>Homepage</a> </p></body>");
-    }
 }
