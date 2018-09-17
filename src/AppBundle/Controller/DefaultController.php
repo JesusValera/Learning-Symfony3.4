@@ -27,4 +27,12 @@ class DefaultController extends Controller
         return $this->render('default/about_us.html.twig');
     }
 
+    /**
+     * @Route("/contact/{location}", name="contact")
+     */
+    public function contactAction($location = 'Murcia Valencia Madrid')
+    {
+        return $this->render('default/contact.html.twig',
+            ['location' => explode(' ', $location)]);
+    }
 }
