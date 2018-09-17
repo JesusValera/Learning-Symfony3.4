@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About us!{% endblock %}
+
+{% block body %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">Jesus' Pub
+            <small>About us</small>
+        </h1>
+
+        <!-- Image Header -->
+        <img class="img-fluid rounded mb-4" src="{{ asset('img/about_header.jpg') }}" alt="">
+
+        <h2>Team</h2>
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ asset('img/about_team3.png') }}" alt="">
+                    <div class="card-header text-center">
+                        <h5>Jesús Martínez Giménez</h5>
+                        <span class="card-subtitle mb-2 text-muted">Chef</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam augue nunc, dignissim vitae fermentum vel, porttitor et urna. Donec a justo id nibh tincidunt molestie.</p>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fa fa-envelope"> jesus@jesuspub.es</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ asset('img/about_team1.png') }}" alt="">
+                    <div class="card-header text-center">
+                        <h5>Lucía Martínez González</h5>
+                        <span class="card-subtitle mb-2 text-muted">Cooker</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur.</p>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fa fa-envelope"> lucia@jesuspub.es</i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ asset('img/about_team2.png') }}" alt="">
+                    <div class="card-header text-center">
+                        <h5>Ana Martínez González</h5>
+                        <span class="card-subtitle mb-2 text-muted">Waitress</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+                    </div>
+                    <div class="card-footer">
+                        <i class="fa fa-envelope"> ana@jesuspub.es</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
