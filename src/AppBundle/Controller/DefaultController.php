@@ -44,4 +44,20 @@ class DefaultController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/tapa/{id}", name="detail")
+     */
+    public function tapaDetailAction($id = null)
+    {
+        $repository = $this->getDoctrine()->getRepository(Tapa::class);
+        $tapa = $repository->find($id);
+
+        if (!isset($tapa)) {
+            throw $this->createNotFoundException('Tapa not found');
+        }
+
+        return $this->render('default/detail.html.twig', [
+            'tapa' => $tapa
+        ]);
+    }
 }
