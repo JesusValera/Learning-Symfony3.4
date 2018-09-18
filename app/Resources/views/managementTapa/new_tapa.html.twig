@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/tapa_form.html.twig' %}
+
+{% block title %}New tapa{% endblock %}
+
+{% block body %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <h1 class="my-4 mb-3">Create new tapa</h1>
+
+        <div class="row col-md-12">
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+    <br>
+    <br>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ asset('js/newTapaImg.js') }}"></script>
+{% endblock %}

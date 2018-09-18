@@ -8,6 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   locale: en
+  tapasImg_dir: '%kernel.project_dir%/web/img/tapasImg'
 
 framework:
   templating:
@@ -38,6 +39,8 @@ framework:
 twig:
   debug: '%kernel.debug%'
   strict_variables: '%kernel.debug%'
+  globals:
+    tapaImg: 'img/tapasImg/'
 
 # Doctrine Configuration
 doctrine:
@@ -59,33 +62,6 @@ doctrine:
     #   3. Uncomment next line:
     #path: '%database_path%'
 
-    # ----------------------------------------------
-    # Create DB from terminal.
-    # php bin/console doctrine:database:create
-    # php bin/console doctrine:database:drop --force
-    # php bin/console doctrine:schema:create
-    # php bin/console doctrine:schema:update --force
-
-
-    # Update MySQL - Set UTF8.
-    # sudo vim /etc/mysql/my.cnf
-
-    #[mysqld]
-    #collation-server = utf8_unicode_ci
-    #init-connect='SET NAMES utf8'
-    #character-set-server = utf8
-    #skip-character-set-client-handshake
-    #[client]
-    #default-character-set = utf8
-    #[mysql]
-    #default-character-set = utf8
-
-
-    # Recreate the database.
-    # php bin/console doctrine:database:drop --force
-    # php bin/console doctrine:database:create
-    # ----------------------------------------------
-
   orm:
     auto_generate_proxy_classes: '%kernel.debug%'
     naming_strategy: doctrine.orm.naming_strategy.underscore
@@ -102,3 +78,9 @@ swiftmailer:
 sensio_framework_extra:
   router:
     annotations: false
+
+# CKEditor Configuration.
+ivory_ck_editor:
+  configs:
+    my_config:
+      toolbar: standard
