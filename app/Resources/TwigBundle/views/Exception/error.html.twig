@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="{{ _charset }}" />
-    <title>An Error Occurred: {{ status_text }}</title>
-</head>
-<body>
-<h1>Oops! An Error Occurred</h1>
-<h2 style="color: red;">File from app/Resources/TwigBundle/views/Exception/error.html.twig</h2>
-<h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+{% extends 'base.html.twig' %}
 
-<div>
-    Something is broken. Please let us know what you were doing when this error occurred.
-    We will fix it as soon as possible. Sorry for any inconvenience caused.
-</div>
-</body>
-</html>
+{% block title %}An Error Occurred: {{ status_text }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Page not found</h1>
+
+        <h3>The server returned a "{{ status_code }} {{ status_text }}".</h3>
+
+        <p>
+            The requested page couldn't be located. Checkout for any URL
+            misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
+        </p>
+
+        <span style="color: red;">File from app/Resources/TwigBundle/views/Exception/error.html.twig</span>
+        <br>
+        <br>
+
+    </div>
+{% endblock %}

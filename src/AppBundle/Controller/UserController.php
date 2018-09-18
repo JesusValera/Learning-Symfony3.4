@@ -57,9 +57,9 @@ class UserController extends Controller
         }
 
         return $this->render(
-            'security/register.html.twig',
-            ['form' => $form->createView()]
-        );
+            'security/register.html.twig', [
+                'form' => $form->createView()
+            ]);
     }
 
     /**
