@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <br>
+
     {{ form_start(form) }}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
@@ -10,4 +12,6 @@
     {{ form_end(form) }}
 
     <br><a href={{ absolute_url("/users/login") }}>Login</a>
+    <br>
+    <br>
 {% endblock %}

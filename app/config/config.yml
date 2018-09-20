@@ -78,9 +78,3 @@ swiftmailer:
 sensio_framework_extra:
   router:
     annotations: false
-
-# CKEditor Configuration.
-ivory_ck_editor:
-  configs:
-    my_config:
-      toolbar: standard

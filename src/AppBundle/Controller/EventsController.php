@@ -21,7 +21,7 @@ class EventsController extends Controller
     const NO_ALL_ELEMENTS = 'Missing elements.';
 
     /**
-     * @Route("/", name="all_events")
+     * @Route("/", name="event_index")
      */
     public function allAction()
     {

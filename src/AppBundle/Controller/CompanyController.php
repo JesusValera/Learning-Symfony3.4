@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompanyController extends Controller
 {
     /**
-     * @Route("/", name="all_company")
+     * @Route("/", name="company_index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function allCompanyAction()

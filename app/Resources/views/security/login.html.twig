@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <br>
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -32,5 +33,6 @@
     {% if not app.user %}
         <br><br><a href={{ absolute_url("/users/register") }}>Register</a>
     {% endif %}
-
+    <br>
+    <br>
 {% endblock %}
